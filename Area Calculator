@@ -1,0 +1,79 @@
+# area_calculator.rb
+
+PI = 3.14159
+
+def area_of_circle(radius)
+  PI * radius**2
+end
+
+def area_of_rectangle(length, width)
+  length * width
+end
+
+def area_of_square(side)
+  side**2
+end
+
+def area_of_triangle(base, height)
+  0.5 * base * height
+end
+
+def area_of_semicircle(radius)
+  0.5 * PI * radius**2
+end
+
+def get_number(prompt)
+  print "#{prompt}: "
+  gets.to_f
+end
+
+def calculate_area
+  puts "\n=== Shape Area Calculator ==="
+  puts "1. Circle"
+  puts "2. Rectangle"
+  puts "3. Square"
+  puts "4. Triangle"
+  puts "5. Semicircle"
+  print "Choose a shape (1-5): "
+  
+  choice = gets.chomp.to_i
+  
+  case choice
+  when 1
+    r = get_number("Enter radius")
+    area = area_of_circle(r)
+    shape = "Circle"
+  when 2
+    l = get_number("Enter length")
+    w = get_number("Enter width")
+    area = area_of_rectangle(l, w)
+    shape = "Rectangle"
+  when 3
+    s = get_number("Enter side")
+    area = area_of_square(s)
+    shape = "Square"
+  when 4
+    b = get_number("Enter base")
+    h = get_number("Enter height")
+    area = area_of_triangle(b, h)
+    shape = "Triangle"
+  when 5
+    r = get_number("Enter radius")
+    area = area_of_semicircle(r)
+    shape = "Semicircle"
+  else
+    puts "Invalid choice!"
+    return
+  end
+
+  puts "\nThe area of the #{shape} is #{area.round(2)} square units."
+end
+
+# Main program loop
+loop do
+  calculate_area
+  print "\nWould you like to calculate another area? (y/n): "
+  break if gets.chomp.downcase != 'y'
+end
+
+puts "\nThank you for using the Shape Area Calculator!"
